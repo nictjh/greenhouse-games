@@ -1,0 +1,40 @@
+{
+    "games": [
+        {
+            "id": "friends-beyond-borders",
+            "name": "Friends Beyond Borders",
+            "type": "html",
+            "url": "https:\/\/activities.jalanjourney.com\/FriendsBeyondBordersTest\/",
+            "image_url": "https:\/\/activities.jalanjourney.com\/Link-Issuance-System\/assets\/img\/FBB.png",
+            "external_url": "",
+            "description": "Learn more about your friends' cultures from the region"
+        },
+        {
+            "id": "html-game-example",
+            "name": "RecycleMe!",
+            "type": "html",
+            "url": "https:\/\/activities.jalanjourney.com\/RecycleMeFixtureTest\/",
+            "image_url": "https:\/\/activities.jalanjourney.com\/Link-Issuance-System\/assets\/img\/RecycleMe.png",
+            "external_url": "",
+            "description": "Learn to recycle common household items"
+        },
+        {
+            "id": "webgl-game-example",
+            "name": "Supermarket Scramble",
+            "type": "html",
+            "url": "https:\/\/activities.jalanjourney.com\/SupermarketTest\/",
+            "image_url": "https:\/\/activities.jalanjourney.com\/Link-Issuance-System\/assets\/img\/Supermarket.png",
+            "external_url": "",
+            "description": "Balance a tight budget shopping for essentials!"
+        },
+        {
+            "id": "game-1748274342385-654",
+            "name": "Runway",
+            "type": "html",
+            "url": "https:\/\/activities.jalanjourney.com\/RunwayTest\/",
+            "image_url": "https:\/\/activities.jalanjourney.com\/Link-Issuance-System\/assets\/img\/Runway.png",
+            "external_url": "",
+            "description": "Learn about the other impacts of fast fashion."
+        }
+    ]
+}

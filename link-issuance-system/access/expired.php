@@ -1,0 +1,121 @@
+<?php
+/**
+ * Expired Page
+ * 
+ * Shown when a link has expired
+ */
+
+// Define ACCESS_CONTROL constant if not already defined
+if (!defined('ACCESS_CONTROL')) {
+    define('ACCESS_CONTROL', true);
+}
+
+// Get system name from settings if available
+if (!isset($systemName)) {
+    // Include utility functions if not already included
+    if (!function_exists('getSettings')) {
+        require_once __DIR__ . '/../api/utils/storage.php';
+    }
+    $settings = getSettings();
+    $systemName = $settings['system']['name'] ?? 'Link Issuance System';
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo htmlspecialchars($systemName); ?> - Link Unavailable</title>
+    <link rel="stylesheet" href="/Link-Issuance-System/access/new-styles.css">
+    <style>
+        /* Override copyright color to white */
+        .copyright {
+            color: white !important;
+        }
+        
+        /* Header styling */
+        .stars-header {
+            position: relative;
+            margin-bottom: -30px; /* Create overhang effect */
+            z-index: 2;
+        }
+        
+        .contact-button {
+            font-family: 'Garet', sans-serif;
+            display: inline-block;
+            background-color: #2C5247;
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+            border: 2px solid white;
+        }
+        
+        .contact-button:hover {
+            background-color: #1b5e20;
+        }
+        
+        .contact-section {
+            background-color: #4B3372;
+            color: white;
+            padding: 20px 20px;
+            text-align: center;
+        }
+        
+        .contact-title {
+            font-family: 'Garet', sans-serif;
+            font-weight: 700;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        
+        .contact-message {
+            font-family: 'Garet', sans-serif;
+            font-weight: 400;
+            font-size: 20px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with stars and logo -->
+    <div class="stars-header">
+        <img src="/Link-Issuance-System/assets/img/JalanJourneyLogo.svg" alt="Jalan Journey" class="company-logo">
+    </div>
+    
+    <!-- Main content area -->
+    <div class="main-content">
+        <!-- Error content -->
+        <div class="error-container">
+            <div class="error-content">
+                <div class="error-text">
+                    <div class="error-title">Uh oh!</div>
+                    <div class="error-subtitle">Link Unavailable</div>
+                    <div class="error-code">Error code: 410</div>
+                    <div class="error-message">
+                        This link may have expired or the game is no longer active. Game links are often time-limited for events or classroom sessions.
+                    </div>
+                    <div class="button-container">
+                        <a href="https://www.jalanjourney.com" class="back-to-homepage">Back to Homepage</a>
+                    </div>
+                </div>
+                <div class="error-image">
+                    <img src="/Link-Issuance-System/assets/img/SadMascot.svg" alt="Sad Mascot" class="mascot-image">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Contact section with copyright -->
+    <div class="contact-section">
+        <div class="contact-title">Need any assistance?</div>
+        <div class="contact-message">Feel free to reach out to us or your Event Organiser!</div>
+        <a href="mailto:info@jalanjourney.com" class="contact-button">Contact Us</a>
+        <p class="copyright">&copy; 2025 Jalan Journey. All Rights Reserved.</p>
+    </div>
+</body>
+</html>

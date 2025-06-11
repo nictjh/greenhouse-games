@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Jalan Journey</title>
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .frame-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+    .chatbot-overlay {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .chatbot-container {
+      width: 110%;
+      height: 100%;
+      box-sizing: border-box;
+    }
+    @media (min-width: 768px) {
+      body {
+        background-image: url('img/FriendsBeyondBordersWallpaper.png');
+        background-size: cover;
+        background-position: center;
+      }
+      .frame-container {
+        max-width: 768px;
+        max-height: 1024px;
+      }
+      .frame-container::before {
+        content: '';
+        position: absolute;
+        top: -1;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: 1;
+      }
+      .chatbot-overlay {
+        width: 65%;
+        height: 90%;
+        border-radius: 25px;
+        overflow: hidden;
+        background: white;
+        position: absolute;
+        top: 5%;
+        left: 17%;
+      }
+    }
+    
+    /* Loading overlay */
+    #loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #4B3372;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+  
+  <script>
+    // Security check that runs immediately
+    (function() {
+      // Show loading overlay
+      document.addEventListener('DOMContentLoaded', function() {
+        const loadingOverlay = document.getElementById('loading-overlay');
+        if (loadingOverlay) {
+          loadingOverlay.style.display = 'flex';
+        }
+      });
+      
+      // Check if we're in an iframe (from the access portal)
+      const isInIframe = window.self !== window.top;
+      
+      // If we're in an iframe, don't do token validation
+      if (isInIframe) {
+        console.log("Running in iframe, skipping token validation");
+        // Hide loading overlay when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+          const loadingOverlay = document.getElementById('loading-overlay');
+          if (loadingOverlay) {
+            loadingOverlay.style.display = 'none';
+          }
+        });
+        return;
+      }
+      
+      // Only validate token for direct access
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get('token');
+      
+      if (!token) {
+        // No token in URL, redirect to error page
+        window.location.href = 'https://activities.jalanjourney.com/Link-Issuance-System/access/error.php';
+        return;
+      }
+      
+      // Verify token with API
+      fetch('https://activities.jalanjourney.com/Link-Issuance-System/api/validate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          token: token
+        }),
+        credentials: 'include'
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (!data.success) {
+          // Token is invalid, redirect to error page
+          window.location.href = 'https://activities.jalanjourney.com/Link-Issuance-System/access/error.php';
+        } else {
+          // Token is valid, hide loading overlay
+          document.addEventListener('DOMContentLoaded', function() {
+            const loadingOverlay = document.getElementById('loading-overlay');
+            if (loadingOverlay) {
+              loadingOverlay.style.display = 'none';
+            }
+          });
+        }
+      })
+      .catch(error => {
+        console.error('Error validating token:', error);
+        // On error, redirect to error page
+        window.location.href = 'https://activities.jalanjourney.com/Link-Issuance-System/access/error.php';
+      });
+    })();
+  </script>
+</head>
+<body>
+  <!-- Loading overlay -->
+  <div id="loading-overlay">
+    <div class="spinner"></div>
+  </div>
+
+  <div class="frame-container">
+    <div class="chatbot-overlay">
+      <script>var BotStar={appId:"s0e928fac-b385-40ae-946c-c6a572be3d35",mode:"inline"};!function(t,a){var e=function(){(e.q=e.q||[]).push(arguments)};e.q=e.q||[],t.BotStarApi=e;!function(){var t=a.createElement("script");t.type="text/javascript",t.async=1,t.src="https://widget.botstar.com/static/js/widget.js";var e=a.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e)}();}(window,document)</script><div class="chatbot-container" style="height: 100%"></div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+# Hostinger-specific .htaccess file for Link Issuance System
+# Rename this file to .htaccess after uploading to your Hostinger account
+
+# Enable URL rewriting
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Set the base to the correct directory for the subdirectory
+    RewriteBase /Link-Issuance-System/
+    
+    # Handle API requests
+    RewriteRule ^api/([^/]+)/?$ api/index.php?endpoint=$1 [L,QSA]
+    
+    # Prevent direct access to PHP files except for specific entry points
+    RewriteCond %{THE_REQUEST} ^.+?\ [^?]+\.php[?\ ]
+    RewriteCond %{REQUEST_URI} !^/api/index\.php
+    RewriteCond %{REQUEST_URI} !^/admin/index\.php
+    RewriteCond %{REQUEST_URI} !^/access/index\.php
+    RewriteCond %{REQUEST_URI} !^/access/expired\.php
+    RewriteCond %{REQUEST_URI} !^/access/error\.php
+    RewriteCond %{REQUEST_URI} !^/access/notfound\.php
+    RewriteCond %{REQUEST_URI} !^/access/device_limit\.php
+    RewriteCond %{REQUEST_URI} !^/index\.php
+    RewriteCond %{REQUEST_URI} !^/direct-access\.php
+    RewriteCond %{REQUEST_URI} !^/htaccess_test\.php
+    RewriteCond %{REQUEST_URI} !^/check_access_url\.php
+    RewriteCond %{REQUEST_URI} !^/test_access\.php
+    RewriteCond %{REQUEST_URI} !^/check_permissions\.php
+    RewriteCond %{REQUEST_URI} !^/check_permissions_web\.php
+    RewriteRule \.php$ - [F]
+    
+    # Prevent direct access to data and config files
+    RewriteRule ^data/ - [F]
+    RewriteRule ^config/ - [F]
+</IfModule>
+
+# Custom error pages with absolute paths
+ErrorDocument 403 /Link-Issuance-System/access/error.php
+ErrorDocument 404 /Link-Issuance-System/access/notfound.php
+ErrorDocument 410 /Link-Issuance-System/access/expired.php
+ErrorDocument 429 /Link-Issuance-System/access/device_limit.php
+
+# Disable directory listing
+Options -Indexes
+
+# Protect .htaccess file
+<Files .htaccess>
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Protect JSON files in data and config directories
+<FilesMatch "^(links|sessions|settings|games)\.json$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# PHP settings
+<IfModule mod_php7.c>
+    # Increase memory limit if needed
+    php_value memory_limit 128M
+    
+    # Maximum upload file size
+    php_value upload_max_filesize 10M
+    php_value post_max_size 10M
+    
+    # Maximum execution time
+    php_value max_execution_time 30
+    
+    # Error handling
+    php_flag display_errors Off
+    php_flag log_errors On
+    php_value error_log logs/php_errors.log
+</IfModule>
+
+# Enable CORS for API
+<IfModule mod_headers.c>
+    <FilesMatch "^index\.php$">
+        Header set Access-Control-Allow-Origin "*"
+        Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+        Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+    </FilesMatch>
+</IfModule>
+
+# Compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Cache control
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # CSS, JavaScript, and images
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType text/javascript "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    
+    # No cache for PHP files
+    ExpiresByType application/x-httpd-php "access plus 0 seconds"
+</IfModule>
+
+# Hostinger-specific PHP settings
+# Uncomment if needed
+# php_flag display_errors Off
+# php_flag log_errors On

@@ -1,0 +1,417 @@
+/* 
+ * New Access Portal Styles
+ * Customized design for the Link Issuance System
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Garet:wght@300;400;500;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Garet', sans-serif;
+    background-color: #BCAED0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Header with stars */
+.stars-header {
+    background: linear-gradient(to bottom, #084738, #122B25, #674D93);
+    background-image: url('../assets/img/Header.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 130px;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 0 0 20px;
+    margin-bottom: -30px; /* Create overhang effect */
+    z-index: 2;
+}
+
+.company-logo {
+    max-height: 80px;
+    margin: 10px;
+    filter: none; /* Remove any filter that might cause glow */
+}
+
+/* Main content area */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    background-color: #BCAED0;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Error content */
+.error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+    flex: 1;
+}
+
+.error-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.error-text {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+    text-align: left;
+}
+
+.error-image {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.mascot-image {
+    max-width: 300px;
+    height: auto;
+}
+
+/* Uh Oh! text with offset effect */
+.error-title {
+    font-family: 'Garet', sans-serif;
+    font-weight: 700;
+    font-size: 80px;
+    color: white;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.error-title::after {
+    content: "Uh oh!";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    color: #1e3d35;
+    z-index: -1;
+}
+
+.error-subtitle {
+    font-family: 'Garet', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 10px;
+    text-transform: none;
+}
+
+.error-code {
+    font-family: 'Garet', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.error-message {
+    font-family: 'Garet', sans-serif;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    max-width: 500px;
+}
+
+.button-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+.back-to-homepage {
+    display: inline-block;
+    background-color: transparent;
+    color: #333;
+    border: 2px solid #333;
+    border-radius: 8px;
+    padding: 12px 30px;
+    font-family: 'Garet', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.back-to-homepage:hover {
+    background-color: #4B3372;
+    color: white;
+    border-color: #4B3372;
+}
+
+/* Contact section */
+.contact-section {
+    flex-shrink: 0;
+    background-color: #4B3372;
+    color: white;
+    padding: 40px 20px 20px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 0;
+    min-height: auto;
+}
+
+.contact-title {
+    font-family: 'Garet', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.contact-message {
+    font-family: 'Garet', sans-serif;
+    font-size: 18px;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-button {
+    display: inline-block;
+    background-color: #2d4f45;
+    color: white;
+    border: 2px solid white;
+    border-radius: 8px;
+    padding: 12px 30px;
+    font-family: 'Garet', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    margin-bottom: 30px; /* space between button and copyright */
+}
+
+.contact-button:hover {
+    background-color: #1e3d35;
+}
+
+/* Footer */
+.site-footer {
+    position: relative;
+    z-index: 5;
+    flex-shrink: 0;
+    text-align: center;
+    padding: 10px 0 10px 0;
+    margin-top: 20px; /* Pull up over the hills */
+}
+
+.footer-logo {
+    max-height: 40px;
+    margin-bottom: 10px;
+    filter: none; /* Remove any filter that might cause glow */
+}
+
+.copyright {
+    font-family: 'Garet', sans-serif;
+    font-size: 14px;
+    color: #1A5E37;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .error-content {
+        flex-direction: column;
+    }
+    
+    .error-text {
+        order: 2;
+        text-align: center;
+        min-width: 100%;
+        padding: 20px 0;
+    }
+    
+    .error-image {
+        order: 1;
+        min-width: 100%;
+    }
+    
+    .mascot-image {
+        max-width: 200px;
+    }
+    
+    .error-title {
+        font-size: 60px;
+    }
+    
+    .error-subtitle {
+        font-size: 28px;
+    }
+    
+    .button-container {
+        justify-content: center;
+    }
+    
+    .site-footer {
+        margin-top: -50px;
+        padding-top: 30px;
+    }
+    
+    .main-content {
+        padding: 40px 10px;
+    }
+    
+    .error-message {
+        max-width: 100%;
+    }
+
+    .copyright {
+        margin-top: 200px; /* 🎯 this is the correct one */
+    }
+
+    .contact-section {
+        padding-bottom: 80px;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .stars-header {
+        height: 100px;
+    }
+    
+    .company-logo {
+        max-height: 60px;
+    }
+    
+    .error-title {
+        font-size: 48px;
+        text-align: center;
+    }
+    
+    .error-title::after {
+        top: 2px;
+        left: 0;
+        right: 0;
+        text-align: center;
+    }
+    
+    .error-subtitle {
+        font-size: 24px;
+    }
+    
+    .mascot-image {
+        max-width: 150px;
+    }
+    
+    .contact-title {
+        font-size: 28px;
+    }
+    
+    .site-footer {
+        margin-top: -60px;
+    }
+    
+    .main-content {
+        padding: 30px 5px;
+    }
+
+    .error-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    
+    .error-text {
+        min-width: 0;
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .error-image {  
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .mobile-container {
+        width: 100vw;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+}
+
+/* Demo controls */
+.demo-controls {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 9999;
+}
+
+.demo-controls h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.demo-controls button {
+    background-color: #4a6fa5;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.demo-controls button:hover {
+    background-color: #166088;
+}
+
+.demo-controls a {
+    display: inline-block;
+    background-color: #4a6fa5;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.demo-controls a:hover {
+    background-color: #166088;
+}

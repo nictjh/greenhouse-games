@@ -1,0 +1,122 @@
+/**
+ * Notification Styles
+ * 
+ * Styles for the notification system used in the admin dashboard
+ */
+
+/* Notification container */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 300px;
+    padding: 15px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    z-index: 1000;
+    animation: slide-in 0.3s ease-out;
+    transition: all 0.3s ease;
+    border-left: 4px solid #4a6fa5;
+    max-width: 90vw;
+}
+
+/* Notification types */
+.notification.info {
+    border-left-color: #4a6fa5;
+}
+
+.notification.success {
+    border-left-color: #4caf50;
+}
+
+.notification.warning {
+    border-left-color: #ff9800;
+}
+
+.notification.error {
+    border-left-color: #f44336;
+}
+
+/* Notification header */
+.notification-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.notification-header h4 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.notification-header .close-button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #999;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+}
+
+.notification-header .close-button:hover {
+    color: #333;
+}
+
+/* Notification body */
+.notification-body {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.4;
+}
+
+/* Info notification */
+.notification.info .notification-header h4 {
+    color: #4a6fa5;
+}
+
+/* Success notification */
+.notification.success .notification-header h4 {
+    color: #4caf50;
+}
+
+/* Warning notification */
+.notification.warning .notification-header h4 {
+    color: #ff9800;
+}
+
+/* Error notification */
+.notification.error .notification-header h4 {
+    color: #f44336;
+}
+
+/* Animation */
+@keyframes slide-in {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Multiple notifications stacking */
+.notification + .notification {
+    margin-top: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .notification {
+        width: calc(100% - 40px);
+        max-width: none;
+        right: 10px;
+        left: 10px;
+    }
+}

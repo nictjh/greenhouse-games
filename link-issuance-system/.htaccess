@@ -1,0 +1,89 @@
+# Link Issuance System .htaccess
+# Optimized for Hostinger
+
+# Enable URL rewriting
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Set RewriteBase for subdirectory
+    RewriteBase /Link-Issuance-System/
+    
+    # Handle API requests
+    RewriteRule ^api/([^/]+)/?$ api/index.php?endpoint=$1 [L,QSA]
+    
+    # Allow access to test_token.php for debugging
+    RewriteCond %{REQUEST_URI} ^/Link-Issuance-System/test_token\.php
+    RewriteRule .* - [L]
+    
+    # Prevent direct access to PHP files except for specific entry points
+    RewriteCond %{THE_REQUEST} ^.+?\ [^?]+\.php[?\ ]
+    RewriteCond %{REQUEST_URI} !^/Link-Issuance-System/api/index\.php
+    RewriteCond %{REQUEST_URI} !^/Link-Issuance-System/admin/index\.php
+    RewriteCond %{REQUEST_URI} !^/Link-Issuance-System/access/index\.php
+    RewriteCond %{REQUEST_URI} !^/Link-Issuance-System/access/expired\.php
+    RewriteCond %{REQUEST_URI} !^/Link-Issuance-System/access/error\.php
+    RewriteCond %{REQUEST_URI} !^/Link-Issuance-System/access/notfound\.php
+    RewriteCond %{REQUEST_URI} !^/Link-Issuance-System/access/device_limit\.php
+    RewriteCond %{REQUEST_URI} !^/Link-Issuance-System/index\.php
+    RewriteCond %{REQUEST_URI} !^/Link-Issuance-System/direct-access\.php
+    RewriteCond %{REQUEST_URI} !^/Link-Issuance-System/test_token\.php
+    RewriteCond %{REQUEST_URI} !^/Link-Issuance-System/htaccess_test\.php
+    RewriteCond %{REQUEST_URI} !^/Link-Issuance-System/check_access_url\.php
+    RewriteCond %{REQUEST_URI} !^/Link-Issuance-System/test_access\.php
+    RewriteRule \.php$ - [F]
+    
+    # Prevent direct access to data and config files
+    RewriteRule ^data/ - [F]
+    RewriteRule ^config/ - [F]
+    
+    # Allow access to games with token parameter
+    RewriteCond %{REQUEST_URI} ^/Link-Issuance-System/games/(.*)$
+    RewriteCond %{QUERY_STRING} token=
+    RewriteRule .* - [L]
+    
+    # Block direct access to games directory without token
+    RewriteCond %{REQUEST_URI} ^/Link-Issuance-System/games/(.*)$
+    RewriteRule .* /Link-Issuance-System/access/error.php [L]
+</IfModule>
+
+# Custom error pages with absolute paths
+ErrorDocument 403 /Link-Issuance-System/access/error.php
+ErrorDocument 404 /Link-Issuance-System/access/notfound.php
+ErrorDocument 410 /Link-Issuance-System/access/expired.php
+ErrorDocument 429 /Link-Issuance-System/access/device_limit.php
+
+# Disable directory listing
+Options -Indexes
+
+# Protect .htaccess file
+<Files .htaccess>
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Protect JSON files in data and config directories
+<FilesMatch "^(links|sessions|settings|games)\.json$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Cache control
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # CSS, JavaScript, and images
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+    
+    # No cache for PHP files
+    ExpiresByType application/x-httpd-php "access plus 0 seconds"
+</IfModule>

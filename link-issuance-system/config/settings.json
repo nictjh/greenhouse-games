@@ -1,0 +1,28 @@
+{
+  "system": {
+    "name": "Jalan Journey Access Portal",
+    "version": "1.0.0",
+    "session_check_interval": 60,
+    "default_session_duration": 86400,
+    "default_concurrent_limit": 1,
+    "token_expiry": 604800,
+    "admin_password_hash": "$2y$10$7eceuyu8rk1mp2Y0.CYD7ejmsklwtJbiVlNuKHVjOQ5wmqZrPjZqe",
+    "data_directory": "data"
+  },
+  "security": {
+    "token_secret": "change_this_to_a_random_string",
+    "enable_csrf_protection": true,
+    "frame_ancestors": "self",
+    "rate_limit": {
+      "enabled": true,
+      "max_requests": 60,
+      "time_window": 60
+    }
+  },
+  "ui": {
+    "theme": "light",
+    "logo_url": "assets/img/logo.png",
+    "show_time_remaining": true,
+    "show_concurrent_count": true
+  }
+}

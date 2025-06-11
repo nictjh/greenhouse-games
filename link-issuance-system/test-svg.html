@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test SVG Files</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .test-container {
+            margin-bottom: 30px;
+        }
+        .header-test {
+            width: 100%;
+            height: 200px;
+            background-image: url('assets/img/Header.svg');
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 20px;
+        }
+        .hills-test {
+            width: 100%;
+            height: 200px;
+            background-image: url('assets/img/Hills.svg');
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 20px;
+        }
+        .direct-img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Testing SVG Files</h1>
+    
+    <div class="test-container">
+        <h2>Testing Header.svg as Background</h2>
+        <div class="header-test"></div>
+    </div>
+    
+    <div class="test-container">
+        <h2>Testing Hills.svg as Background</h2>
+        <div class="hills-test"></div>
+    </div>
+    
+    <div class="test-container">
+        <h2>Testing Header.svg as Direct Image</h2>
+        <img src="assets/img/Header.svg" alt="Header SVG" class="direct-img">
+    </div>
+    
+    <div class="test-container">
+        <h2>Testing Hills.svg as Direct Image</h2>
+        <img src="assets/img/Hills.svg" alt="Hills SVG" class="direct-img">
+    </div>
+</body>
+</html>

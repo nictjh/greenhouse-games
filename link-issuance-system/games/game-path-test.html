@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Path Test</title>
+</head>
+<body>
+    <h1>Game Path Test</h1>
+    <p>If you can see this page, the path to the games directory is correct.</p>
+    
+    <script>
+        console.log("Game path test loaded successfully");
+        
+        // Display current URL information
+        document.write("<p>Current URL: " + window.location.href + "</p>");
+        document.write("<p>Origin: " + window.location.origin + "</p>");
+        document.write("<p>Pathname: " + window.location.pathname + "</p>");
+        
+        // Try to load the sample game
+        const sampleGamePath = "sample-game.html";
+        document.write("<p>Sample game should be at: " + window.location.origin + window.location.pathname.replace("game-path-test.html", sampleGamePath) + "</p>");
+        
+        // Create a link to the sample game
+        const sampleGameLink = document.createElement("a");
+        sampleGameLink.href = sampleGamePath;
+        sampleGameLink.textContent = "Click here to try loading the sample game directly";
+        document.body.appendChild(sampleGameLink);
+    </script>
+</body>
+</html>

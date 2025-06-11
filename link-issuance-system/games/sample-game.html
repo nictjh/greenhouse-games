@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Game - Protected by Link Issuance System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        header {
+            background-color: #4a6fa5;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .game-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .game-area {
+            margin: 2rem 0;
+            position: relative;
+            height: 400px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            background-color: #f9f9f9;
+        }
+        
+        .player {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #4a6fa5;
+            border-radius: 50%;
+            transition: all 0.1s ease;
+        }
+        
+        .target {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: #ff9800;
+            border-radius: 50%;
+        }
+        
+        .score-display {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .controls {
+            margin-top: 1rem;
+        }
+        
+        button {
+            background-color: #4a6fa5;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 0 0.5rem;
+        }
+        
+        button:hover {
+            background-color: #3a5a84;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .session-info {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .game-area {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sample Game</h1>
+        <p>Protected by Link Issuance System</p>
+    </header>
+    
+    <main>
+        <div class="game-container">
+            <h2>Simple Target Game</h2>
+            <p>Use arrow keys or WASD to move the blue circle and collect the orange targets.</p>
+            
+            <div class="score-display">
+                Score: <span id="score">0</span>
+            </div>
+            
+            <div class="game-area" id="game-area">
+                <div class="player" id="player"></div>
+                <div class="target" id="target"></div>
+            </div>
+            
+            <div class="controls">
+                <button id="start-button">Start Game</button>
+                <button id="reset-button">Reset</button>
+            </div>
+        </div>
+    </main>
+    
+    <div class="session-info" id="session-info">
+        Session information loading...
+    </div>
+    
+    <footer>
+        &copy; 2025 Sample Game. All rights reserved.
+    </footer>
+    
+    <!-- Include the Access Control Client Library -->
+    <script src="../assets/js/access-control.min.js"></script>
+    
+    <script>
+        // Initialize Access Control
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("Initializing Access Control");
+            
+            // Get token from URL if present
+            const urlParams = new URLSearchParams(window.location.search);
+            const token = urlParams.get('token');
+            
+            if (token) {
+                console.log("Token found in URL:", token.substring(0, 8) + "...");
+                // Store token in a cookie if needed
+                // This is optional as the server already sets the session_token cookie
+            }
+            
+            AccessControl.init({
+                onExpired: function() {
+                    alert('Your access session has expired. You will be redirected to the access gateway.');
+                    window.location.href = '../access/';
+                },
+                checkInterval: 60, // Check session every 60 seconds
+                debug: true // Enable debug logging
+            });
+        });
+        
+        // Game variables
+        let score = 0;
+        let gameActive = false;
+        let playerX = 0;
+        let playerY = 0;
+        let playerSpeed = 5;
+        let keysPressed = {};
+        
+        // DOM elements
+        const gameArea = document.getElementById('game-area');
+        const player = document.getElementById('player');
+        const target = document.getElementById('target');
+        const scoreDisplay = document.getElementById('score');
+        const startButton = document.getElementById('start-button');
+        const resetButton = document.getElementById('reset-button');
+        const sessionInfo = document.getElementById('session-info');
+        
+        // Game area dimensions
+        let gameWidth = gameArea.clientWidth;
+        let gameHeight = gameArea.clientHeight;
+        
+        // Initialize player position
+        function initPlayer() {
+            playerX = gameWidth / 2 - 25;
+            playerY = gameHeight / 2 - 25;
+            updatePlayerPosition();
+        }
+        
+        // Update player position
+        function updatePlayerPosition() {
+            player.style.left = playerX + 'px';
+            player.style.top = playerY + 'px';
+        }
+        
+        // Place target at random position
+        function placeTarget() {
+            const targetX = Math.random() * (gameWidth - 30);
+            const targetY = Math.random() * (gameHeight - 30);
+            target.style.left = targetX + 'px';
+            target.style.top = targetY + 'px';
+        }
+        
+        // Check collision between player and target
+        function checkCollision() {
+            const playerRect = player.getBoundingClientRect();
+            const targetRect = target.getBoundingClientRect();
+            
+            return !(
+                playerRect.right < targetRect.left ||
+                playerRect.left > targetRect.right ||
+                playerRect.bottom < targetRect.top ||
+                playerRect.top > targetRect.bottom
+            );
+        }
+        
+        // Game loop
+        function gameLoop() {
+            if (!gameActive) return;
+            
+            // Move player based on keys pressed
+            if (keysPressed['ArrowUp'] || keysPressed['w'] || keysPressed['W']) {
+                playerY = Math.max(0, playerY - playerSpeed);
+            }
+            if (keysPressed['ArrowDown'] || keysPressed['s'] || keysPressed['S']) {
+                playerY = Math.min(gameHeight - 50, playerY + playerSpeed);
+            }
+            if (keysPressed['ArrowLeft'] || keysPressed['a'] || keysPressed['A']) {
+                playerX = Math.max(0, playerX - playerSpeed);
+            }
+            if (keysPressed['ArrowRight'] || keysPressed['d'] || keysPressed['D']) {
+                playerX = Math.min(gameWidth - 50, playerX + playerSpeed);
+            }
+            
+            updatePlayerPosition();
+            
+            // Check for collision with target
+            if (checkCollision()) {
+                score++;
+                scoreDisplay.textContent = score;
+                placeTarget();
+            }
+            
+            requestAnimationFrame(gameLoop);
+        }
+        
+        // Start game
+        function startGame() {
+            if (gameActive) return;
+            
+            gameActive = true;
+            score = 0;
+            scoreDisplay.textContent = score;
+            initPlayer();
+            placeTarget();
+            gameLoop();
+            startButton.textContent = 'Pause Game';
+        }
+        
+        // Pause game
+        function pauseGame() {
+            gameActive = false;
+            startButton.textContent = 'Resume Game';
+        }
+        
+        // Reset game
+        function resetGame() {
+            pauseGame();
+            score = 0;
+            scoreDisplay.textContent = score;
+            initPlayer();
+            placeTarget();
+            startButton.textContent = 'Start Game';
+        }
+        
+        // Event listeners
+        startButton.addEventListener('click', function() {
+            if (gameActive) {
+                pauseGame();
+            } else {
+                startGame();
+            }
+        });
+        
+        resetButton.addEventListener('click', resetGame);
+        
+        // Keyboard controls
+        window.addEventListener('keydown', function(e) {
+            keysPressed[e.key] = true;
+        });
+        
+        window.addEventListener('keyup', function(e) {
+            keysPressed[e.key] = false;
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            gameWidth = gameArea.clientWidth;
+            gameHeight = gameArea.clientHeight;
+            
+            // Keep player within bounds
+            playerX = Math.min(playerX, gameWidth - 50);
+            playerY = Math.min(playerY, gameHeight - 50);
+            updatePlayerPosition();
+        });
+        
+        // Get session info from cookie
+        function updateSessionInfo() {
+            const sessionToken = getCookie('session_token');
+            
+            if (sessionToken) {
+                // Decode JWT payload (middle part)
+                try {
+                    const base64Url = sessionToken.split('.')[1];
+                    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                    }).join(''));
+                    
+                    const payload = JSON.parse(jsonPayload);
+                    
+                    // Display session info
+                    sessionInfo.innerHTML = `
+                        <strong>Session Active</strong><br>
+                        Token: ${payload.token.substring(0, 8)}...<br>
+                        Session ID: ${payload.session_id.substring(0, 8)}...
+                    `;
+                } catch (e) {
+                    sessionInfo.textContent = 'Invalid session token';
+                }
+            } else {
+                sessionInfo.textContent = 'No active session';
+            }
+        }
+        
+        // Get cookie by name
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null;
+        }
+        
+        // Initialize game
+        window.addEventListener('load', function() {
+            initPlayer();
+            placeTarget();
+            updateSessionInfo();
+            
+            // Update session info every 10 seconds
+            setInterval(updateSessionInfo, 10000);
+        });
+    </script>
+</body>
+</html>

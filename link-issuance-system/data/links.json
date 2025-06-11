@@ -1,0 +1,361 @@
+{
+    "links": [
+        {
+            "id": "test-link-1",
+            "token": "test-token-123456",
+            "game_ids": [
+                "friends-beyond-borders",
+                "html-game-example"
+            ],
+            "duration": 7200,
+            "concurrent_limit": 1,
+            "created_at": 1714147200,
+            "expires_at": 1746118714,
+            "activated_at": 1746111514,
+            "is_active": true,
+            "note": "Test link created manually",
+            "name": "Kranji Secondary School 28 April",
+            "sessions": []
+        },
+        {
+            "id": "680f7304d526e",
+            "token": "0a26489930fe2cdd7a71ba2b59af5f77",
+            "game_ids": [
+                "friends-beyond-borders"
+            ],
+            "duration": 60,
+            "concurrent_limit": 1,
+            "created_at": 1745842948,
+            "expires_at": 1745843015,
+            "activated_at": 1745842955,
+            "is_active": true,
+            "note": "",
+            "name": "Test",
+            "sessions": []
+        },
+        {
+            "id": "680f73d357e1f",
+            "token": "577eeca9914481a06cd7227b599d4d11",
+            "game_ids": [
+                "friends-beyond-borders"
+            ],
+            "duration": 60,
+            "concurrent_limit": 1,
+            "created_at": 1745843155,
+            "expires_at": 1745843222,
+            "activated_at": 1745843162,
+            "is_active": true,
+            "note": "",
+            "name": "Kranji",
+            "sessions": []
+        },
+        {
+            "id": "680f7626788ba",
+            "token": "44453d5664b02bd65bef8d28bf1f1cb1",
+            "game_ids": [
+                "friends-beyond-borders"
+            ],
+            "duration": 60,
+            "concurrent_limit": 1,
+            "created_at": 1745843750,
+            "expires_at": 1745843817,
+            "activated_at": 1745843757,
+            "is_active": true,
+            "note": "",
+            "name": "Test",
+            "sessions": []
+        },
+        {
+            "id": "68138c3373c30",
+            "token": "16920b810e15b89b976cfcff6426261e",
+            "game_ids": [
+                "friends-beyond-borders"
+            ],
+            "duration": 86400,
+            "concurrent_limit": 2,
+            "created_at": 1746111539,
+            "expires_at": 1746197982,
+            "activated_at": 1746111582,
+            "is_active": false,
+            "note": "",
+            "name": "Test for Donald",
+            "sessions": []
+        },
+        {
+            "id": "68138cdfbd441",
+            "token": "1f1473799a7776821c1b9ab714b65a50",
+            "game_ids": [
+                "friends-beyond-borders"
+            ],
+            "duration": 86400,
+            "concurrent_limit": 2,
+            "created_at": 1746111711,
+            "expires_at": 1746198119,
+            "activated_at": 1746111719,
+            "is_active": true,
+            "note": "",
+            "name": "Test for Donald",
+            "sessions": []
+        },
+        {
+            "id": "682c9e98d5656",
+            "token": "60d093a5d5ed7bcd4a26f668d58ccbb5",
+            "game_ids": [
+                "friends-beyond-borders"
+            ],
+            "duration": 86400,
+            "concurrent_limit": 1,
+            "created_at": 1747754648,
+            "expires_at": 1747841058,
+            "activated_at": 1747754658,
+            "is_active": true,
+            "note": "",
+            "name": "Test",
+            "sessions": []
+        },
+        {
+            "id": "682cab2462911",
+            "token": "fbf7983e0da93a091b1e9cdf82bdeed7",
+            "game_ids": [
+                "html-game-example"
+            ],
+            "duration": 86400,
+            "concurrent_limit": 1,
+            "created_at": 1747757860,
+            "expires_at": 1747844267,
+            "activated_at": 1747757867,
+            "is_active": true,
+            "note": "",
+            "name": "RecycleMe Test",
+            "sessions": []
+        },
+        {
+            "id": "682cb1fbe0785",
+            "token": "b2219bc26ac90093801b89317febf7ec",
+            "game_ids": [
+                "html-game-example"
+            ],
+            "duration": 86400,
+            "concurrent_limit": 1,
+            "created_at": 1747759611,
+            "expires_at": 1747846020,
+            "activated_at": 1747759620,
+            "is_active": true,
+            "note": "",
+            "name": "TestRecycle",
+            "sessions": []
+        },
+        {
+            "id": "68348439e0173",
+            "token": "efbdda78f793320575b4f69a494ce7f2",
+            "game_ids": [
+                "html-game-example"
+            ],
+            "duration": 600,
+            "concurrent_limit": 5,
+            "created_at": 1748272185,
+            "expires_at": 1748328275,
+            "activated_at": 1748327675,
+            "is_active": true,
+            "note": "Test Link",
+            "name": "[TEST] Xingnan Primary School RecycleMe!",
+            "sessions": []
+        },
+        {
+            "id": "6834845166bc2",
+            "token": "f0528dfb843bcdbc7cc584a8df96ccfb",
+            "game_ids": [
+                "html-game-example"
+            ],
+            "duration": 7200,
+            "concurrent_limit": 55,
+            "created_at": 1748272209,
+            "expires_at": 1748338332,
+            "activated_at": 1748331132,
+            "is_active": true,
+            "note": "",
+            "name": "Xingnan Primary School RecycleMe!",
+            "sessions": []
+        },
+        {
+            "id": "68348461a967f",
+            "token": "cf9f3a5912d537f8979253c8a6968be4",
+            "game_ids": [
+                "html-game-example"
+            ],
+            "duration": 600,
+            "concurrent_limit": 1,
+            "created_at": 1748272225,
+            "expires_at": 1748272857,
+            "activated_at": 1748272257,
+            "is_active": true,
+            "note": "",
+            "name": "[TEST for me ] Xingnan Primary School RecycleMe!",
+            "sessions": []
+        },
+        {
+            "id": "68348cf62acd7",
+            "token": "1864f771e055e5c163898a254b416621",
+            "game_ids": [
+                "game-1748274342385-654"
+            ],
+            "duration": 86400,
+            "concurrent_limit": 1,
+            "created_at": 1748274422,
+            "expires_at": 1748360829,
+            "activated_at": 1748274429,
+            "is_active": false,
+            "note": "",
+            "name": "TestforRunway",
+            "sessions": []
+        },
+        {
+            "id": "68348da9d29d9",
+            "token": "c8b295fe89219c0048120192264e49a0",
+            "game_ids": [
+                "html-game-example"
+            ],
+            "duration": 600,
+            "concurrent_limit": 3,
+            "created_at": 1748274601,
+            "expires_at": 1748497557,
+            "activated_at": 1748496957,
+            "is_active": true,
+            "note": "",
+            "name": "[TEST] CampusImpact RecycleMe!",
+            "sessions": []
+        },
+        {
+            "id": "68348dc945e69",
+            "token": "91ccbee2a5887d76f42224e8dcef64f9",
+            "game_ids": [
+                "html-game-example"
+            ],
+            "duration": 10800,
+            "concurrent_limit": 10,
+            "created_at": 1748274633,
+            "expires_at": 1748510688,
+            "activated_at": 1748499888,
+            "is_active": true,
+            "note": "",
+            "name": "CampusImpact RecycleMe!",
+            "sessions": []
+        },
+        {
+            "id": "68348dda5e922",
+            "token": "dc24f293308f2bbc2b0f0214a6f998b4",
+            "game_ids": [
+                "game-1748274342385-654"
+            ],
+            "duration": 600,
+            "concurrent_limit": 3,
+            "created_at": 1748274650,
+            "expires_at": 1748497769,
+            "activated_at": 1748497169,
+            "is_active": true,
+            "note": "",
+            "name": "[TEST] CampusImpact Runway",
+            "sessions": []
+        },
+        {
+            "id": "68348debacb40",
+            "token": "178c6a13c314c11319b2ce6921f7e336",
+            "game_ids": [
+                "game-1748274342385-654"
+            ],
+            "duration": 10800,
+            "concurrent_limit": 10,
+            "created_at": 1748274667,
+            "expires_at": 1748510690,
+            "activated_at": 1748499890,
+            "is_active": true,
+            "note": "",
+            "name": "CampusImpact Runway",
+            "sessions": []
+        },
+        {
+            "id": "6835a3df720c2",
+            "token": "b15d97f505709c6b5e17a00c4608f100",
+            "game_ids": [
+                "html-game-example"
+            ],
+            "duration": 3600,
+            "concurrent_limit": 10,
+            "created_at": 1748345823,
+            "expires_at": 1748350428,
+            "activated_at": 1748346828,
+            "is_active": true,
+            "note": "",
+            "name": "[TEST2] Xingnan Primary School RecycleMe!",
+            "sessions": []
+        },
+        {
+            "id": "6835a40d9e439",
+            "token": "f727dfb5844ac8163fc2e64e4e67933c",
+            "game_ids": [
+                "html-game-example"
+            ],
+            "duration": 10800,
+            "concurrent_limit": 55,
+            "created_at": 1748345869,
+            "expires_at": 1748417962,
+            "activated_at": 1748407162,
+            "is_active": true,
+            "note": "",
+            "name": "[28 May] Xingnan Primary School RecycleMe!",
+            "sessions": []
+        },
+        {
+            "id": "683abc0483244",
+            "token": "1042e9a903be2bf59ddb8877e55beaeb",
+            "game_ids": [
+                "html-game-example"
+            ],
+            "duration": 1200,
+            "concurrent_limit": 1,
+            "created_at": 1748679684,
+            "expires_at": 1748680904,
+            "activated_at": 1748679704,
+            "is_active": true,
+            "note": "",
+            "name": "Test For Sri",
+            "sessions": [
+                {
+                    "id": "57bccc05fe3f2296",
+                    "device_fingerprint": "755c262d7ec2f7a222c87969f00594c8403e060105d7f47b33e25af3b5a53b6b",
+                    "created_at": 1748679704,
+                    "last_activity": 1748680034
+                },
+                {
+                    "id": "c49cf06a1a0a49a6",
+                    "device_fingerprint": "d663f4c76feacf1cf792b606c7a927136a2d1a0be6383ebc63efb2490d5affdc",
+                    "created_at": 1748679869,
+                    "last_activity": 1748679904
+                }
+            ]
+        },
+        {
+            "id": "683abd5ab7176",
+            "token": "710fd33a73a65bcf0205f3220bc961c1",
+            "game_ids": [
+                "html-game-example"
+            ],
+            "duration": 120,
+            "concurrent_limit": 1,
+            "created_at": 1748680026,
+            "expires_at": 1748680168,
+            "activated_at": 1748680048,
+            "is_active": true,
+            "note": "",
+            "name": "TestAgain",
+            "sessions": [
+                {
+                    "id": "6ccbb49f5543770f",
+                    "device_fingerprint": "755c262d7ec2f7a222c87969f00594c8403e060105d7f47b33e25af3b5a53b6b",
+                    "created_at": 1748680048,
+                    "last_activity": 1748680156
+                }
+            ]
+        }
+    ]
+}
