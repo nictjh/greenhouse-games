@@ -1,5 +1,7 @@
+'use client'
 import { Image, Box, Flex, Input, Button, Text, HStack, IconButton } from "@chakra-ui/react";
 import { FiSearch, FiShoppingCart } from "react-icons/fi";
+import ScrollableCategories from "./scrollableCategories";
 
 const Navbar = () => {
   return (
@@ -15,9 +17,9 @@ const Navbar = () => {
         {/* Company Logo - Left aligned */}
         <Box flex="1">
           <Image 
-            src="/GHG_icons/GHG-icon.png" // Path to your icon in public folder
+            src="/GHG_icons/GHG-icon.png"
             alt="EduGames Logo"
-            h="6vw" // Adjust height as needed
+            h="6vw"
             w="auto"
           />
         </Box>
@@ -31,7 +33,7 @@ const Navbar = () => {
             _hover={{ borderColor: "gray.400" }}
             _focus={{ borderColor: "green.500", boxShadow: "none" }}
             pl={4}
-            pr={10} // Make room for the search icon
+            pr={10}
           />
 
           <IconButton
@@ -51,7 +53,7 @@ const Navbar = () => {
           </IconButton>
         </Box>
 
-        {/* Auth Buttons and Cart - Right aligned */}
+        {/* Auth Buttons and Cart */}
         <Flex flex="1" justify="flex-end" align="center" gap={2}>
           <Button 
             variant="ghost" 
@@ -87,7 +89,7 @@ const Navbar = () => {
         </Flex>
       </Flex>
 
-      {/* Bottom Section - Game Categories Slider */}
+      {/* Bottom Section */}
       <Box 
         w="full" 
         overflowX="auto" 
@@ -118,7 +120,7 @@ const Navbar = () => {
               borderRadius="full"
               _hover={{ bg: 'gray.200' }}
               _active={{ bg: 'gray.300' }}
-              color="#1b4a26"
+              color="black"
             >
               {category}
             </Button>
