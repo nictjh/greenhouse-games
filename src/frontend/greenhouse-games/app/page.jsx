@@ -1,4 +1,4 @@
-import Image from "next/image";
+'use client'
 import Carousel from "./components/carousel";
 
 export default function Home() {

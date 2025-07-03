@@ -35,6 +35,14 @@ const cardData = [
     rating: 4.6,
     reviews: 78
   },
+  {
+    title: "Reduce food waste",
+    organiser: "Jalan Journey",
+    imageUrl: "https://picsum.photos/200/200",
+    organiserPic: "",
+    rating: 4.6,
+    reviews: 78
+  }
 ];
 
 const Carousel = () => {
@@ -75,9 +83,9 @@ const Carousel = () => {
               <Flex justify="space-between" align="center">
                 {/* Organiser & Price */}
                 <Flex align="center" gap={2}>
-                <Avatar.Root>
-                    <Avatar.Fallback name="Segun Adebayo" />
-                    <Avatar.Image src="https://bit.ly/sage-adebayo" />
+                <Avatar.Root size="xs">
+                    <Avatar.Fallback name={item.organiser} />
+                    <Avatar.Image src={item.organiserPic} />
                 </Avatar.Root>
                   <Box>
                     <Text fontSize="xs" fontWeight="medium">
