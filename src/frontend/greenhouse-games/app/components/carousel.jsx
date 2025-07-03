@@ -1,20 +1,39 @@
-import { Box, Button, Image, Text, Flex } from "@chakra-ui/react";
+import {
+    Box,
+    Button,
+    Image,
+    Text,
+    Flex,
+    Avatar,
+    Icon,
+  } from "@chakra-ui/react";
+  import { FaStar } from "react-icons/fa";
+
 
 const cardData = [
   {
     title: "Reduce food waste",
     organiser: "Jalan Journey",
     imageUrl: "https://picsum.photos/200/200",
+    organiserPic: "",
+    rating: 4.6,
+    reviews: 78
   },
   {
-    title: "Save the world!",
+    title: "Reduce food waste",
     organiser: "Jalan Journey",
-    imageUrl: "https://picsum.photos/201/200",
+    imageUrl: "https://picsum.photos/200/200",
+    organiserPic: "",
+    rating: 4.6,
+    reviews: 78
   },
   {
-    title: "Help out the homeless",
+    title: "Reduce food waste",
     organiser: "Jalan Journey",
-    imageUrl: "https://picsum.photos/202/200",
+    imageUrl: "https://picsum.photos/200/200",
+    organiserPic: "",
+    rating: 4.6,
+    reviews: 78
   },
 ];
 
@@ -25,39 +44,63 @@ const Carousel = () => {
         {cardData.map((item, index) => (
           <Box
             key={index}
-            minW="180px"
-            maxW="180px"
+            minW="200px"
+            maxW="200px"
             bg="white"
-            rounded="lg"
+            rounded="xl"
             shadow="md"
             overflow="hidden"
+            position="relative"
             flexShrink={0}
+            display="flex"
+            flexDirection="column"
+            justifyContent="space-between"
           >
-            <Image
-              src={item.imageUrl}
-              alt={item.title}
-              borderRadius="25"
-              boxSize="140px"
-              mx="auto"
-              mt={4}
-              objectFit="cover"
-            />
-            <Box p={4} textAlign="center">
-              <Text fontWeight="bold" fontSize="lg" mb={1}>
+            <Box textAlign="center" p={4}>
+              <Image
+                src={item.imageUrl}
+                alt={item.title}
+                borderRadius="full"
+                boxSize="120px"
+                mx="auto"
+                mb={3}
+                objectFit="cover"
+              />
+              <Text fontWeight="bold" fontSize="lg">
                 {item.title}
               </Text>
-              <Text fontSize="sm" color="gray.600">
-                {item.organiser}
-              </Text>
             </Box>
-            <Flex justify="center" gap={2} pb={4}>
-              <Button size="sm" variant="outline">
-                View
-              </Button>
-              <Button size="sm" colorScheme="blue">
-                Join
-              </Button>
-            </Flex>
+
+            <Box px={4} pb={3} mt="auto">
+              <Flex justify="space-between" align="center">
+                {/* Organiser & Price */}
+                <Flex align="center" gap={2}>
+                <Avatar.Root>
+                    <Avatar.Fallback name="Segun Adebayo" />
+                    <Avatar.Image src="https://bit.ly/sage-adebayo" />
+                </Avatar.Root>
+                  <Box>
+                    <Text fontSize="xs" fontWeight="medium">
+                      {item.organiser}
+                    </Text>
+                    <Text fontSize="xs" color="gray.500">
+                      {item.price}
+                    </Text>
+                  </Box>
+                </Flex>
+
+                {/* Rating */}
+                <Flex align="center" gap={1}>
+                  <Text fontSize="sm" fontWeight="bold">
+                    {item.rating}
+                  </Text>
+                  <Icon as={FaStar} color="yellow.400" boxSize={4} />
+                  <Text fontSize="xs" color="gray.500">
+                    ({item.reviews})
+                  </Text>
+                </Flex>
+              </Flex>
+            </Box>
           </Box>
         ))}
       </Flex>
