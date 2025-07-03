@@ -3,16 +3,18 @@ import Provider from "./components/ui/provider";
 import "./globals.css";
 
 export const metadata = {
-  title: "Greenhouse Games",
-  description: "A platform for educational games",
+  title: "Greenhouse Games | Learn Through Play",
+  description: "A platform for educational games for educators and students alike!",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html suppressHydrationWarning lang="en">
       <body>
         <Provider>
-          <Navbar />
+          <div className="sticky top-0 z-50">
+            <Navbar />
+          </div>
           {children}
         </Provider>
       </body>
