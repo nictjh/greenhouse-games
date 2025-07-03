@@ -50,16 +50,14 @@ const cardData = [
 
 const Carousel = () => {
     return (
-        <Box overflowX="auto" py={4}>
+        <Box overflowX="auto" py={4} bg="#f5f5f5">
             <Flex gap={4} px={4} width="max-content">
                 {cardData.map((item, index) => (
                     <Box
                         key={index}
                         minW="200px"
                         maxW="200px"
-                        bg="white"
                         rounded="xl"
-                        shadow="md"
                         overflow="hidden"
                         position="relative"
                         flexShrink={0}
@@ -67,7 +65,8 @@ const Carousel = () => {
                         flexDirection="column"
                         justifyContent="space-between"
                     >
-                        <Box textAlign="center" p={4}>
+                        <Box 
+                            textAlign="center" p={4}>
                             <Image
                                 src={item.imageUrl}
                                 alt={item.title}
