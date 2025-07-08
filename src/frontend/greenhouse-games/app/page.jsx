@@ -1,13 +1,14 @@
 'use client'
 
 import { ChakraProvider } from "@chakra-ui/react";
+import BoostCard from "./components/boostCard";
 import Carousel from "./components/carousel";
-// import "./index.css"; {a wip xD}
 
 export default function Home() {
   return (
     <div>
       <Carousel/>
+      <BoostCard/>
     </div>
   );
 }
