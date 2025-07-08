@@ -5,7 +5,7 @@ import ScrollableCategories from "./scrollableCategories";
 
 const Navbar = () => {
   return (
-    <Box as="nav" w="full" borderBottom="1px" borderColor="gray.200" bg="#f5f5f5">
+    <Box as="nav" w="full" borderBottom="1px" borderColor="gray.200" bg="#D8DFCD">
       {/* Top Section - Logo, Search, Auth, Cart */}
       <Flex 
         justify="space-evenly" 
@@ -29,7 +29,7 @@ const Navbar = () => {
           <Input 
             placeholder="Search games..." 
             borderRadius="full"
-            borderColor="gray.300"
+            borderColor="gray.700"
             _hover={{ borderColor: "gray.400" }}
             _focus={{ borderColor: "green.500", boxShadow: "none" }}
             pl={4}
@@ -95,7 +95,7 @@ const Navbar = () => {
         overflowX="auto" 
         py={1} 
         px={6}
-        bg="#f5f5f5"
+        bg="#D8DFCD"
         css={{
           '&::-webkit-scrollbar': {
             height: '4px',

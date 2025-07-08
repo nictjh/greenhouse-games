@@ -6,7 +6,9 @@ import {
     Avatar,
     Icon,
 } from "@chakra-ui/react";
-import { FaStar } from "react-icons/fa";
+import { FaStar, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { IconButton } from "@chakra-ui/react";
+import { useRef } from "react";
 
 
 const cardData = [
@@ -49,9 +51,45 @@ const cardData = [
 ];
 
 const Carousel = () => {
+    const scrollRef = useRef(null);
+
+    const scroll = (direction) => {
+        if (scrollRef.current) {
+            const amount = 220; // width of one card + spacing
+            scrollRef.current.scrollBy({
+                left: direction === "left" ? -amount : amount,
+                behavior: "smooth",
+            });
+        }
+    };
+
     return (
-        <Box overflowX="auto" py={4} bg="#f5f5f5">
-            <Flex gap={4} px={4} width="max-content">
+        <Box overflowX="auto" py={4} bg="#F9FCEA">
+            <Flex justify="space-between" align="center" p="4" pt="1">
+                <Text fontWeight="bold" color="green.800">Explore popular games</Text>
+                {/* idk how to fix the arrows xD  */}
+                <Flex gap={2}>
+                    <IconButton
+                        aria-label="Scroll left"
+                        icon={<Icon as={FaChevronLeft} boxSize={4} />}
+                        onClick={() => scroll("left")}
+                        variant="outline"
+                        size="sm"
+                        colorScheme="green"
+                    />
+                    <IconButton
+                        aria-label="Scroll right"
+                        icon={<Icon as={FaChevronRight} boxSize={4} />}
+                        onClick={() => scroll("right")}
+                        variant="outline"
+                        size="sm"
+                        colorScheme="green"
+                    />
+
+                </Flex>
+            </Flex>
+
+            <Flex gap={6} px={4} width="max-content">
                 {cardData.map((item, index) => (
                     <Box
                         key={index}
@@ -64,8 +102,10 @@ const Carousel = () => {
                         display="flex"
                         flexDirection="column"
                         justifyContent="space-between"
+                        borderWidth="2px"
+                        borderColor="gray.700/20"
                     >
-                        <Box 
+                        <Box
                             textAlign="center" p={4}>
                             <Image
                                 src={item.imageUrl}
